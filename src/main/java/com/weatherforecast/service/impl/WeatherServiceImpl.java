@@ -9,8 +9,12 @@ import com.weatherforecast.repository.CityWeatherRepo;
 import com.weatherforecast.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+//import org.springframework.cache.annotation.Cacheable;
+//import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.util.Objects;
 import java.time.LocalDate;
 
 
@@ -19,14 +23,21 @@ import java.time.LocalDate;
 public class WeatherServiceImpl implements WeatherService {
 
     @Value("${weather.api.key}")
-    private final String apiKey;
+    private String apiKey;
+//    private static final String FORECAST_CACHE_KEY = "weather:forecast:";
 
     private final WeatherApiClient weatherApiClient;
     private final CityWeatherRepo cityWeatherRepo;
-
-
+//    private final RedisTemplate<String, Object> redisTemplate;
+//    @Cacheable(value = "cityForecasts", key = "#weatherApiRequest.city")
     @Override
     public WeatherApiResponse getForecast(WeatherApiRequest weatherApiRequest) {
+//        String cacheKey = FORECAST_CACHE_KEY + weatherApiRequest.getCity();
+        //WeatherApiResponse cachedResponse = (WeatherApiResponse) redisTemplate.opsForValue().get(cacheKey);
+
+//        if (Objects.nonNull(cachedResponse)) {
+//            return cachedResponse;
+//        }
         WeatherApiResponse apiResponse = weatherApiClient.getForecast(apiKey,
                 weatherApiRequest.getCity(),
                 weatherApiRequest.getDays(),
@@ -37,6 +48,11 @@ public class WeatherServiceImpl implements WeatherService {
         prepareCityInfo(apiResponse, city);
         prepareCityForecast(apiResponse, city);
         cityWeatherRepo.save(city);
+//        redisTemplate.opsForValue().set(
+//                cacheKey,
+//                apiResponse,
+//                Duration.ofMinutes(10)
+//        );
         return apiResponse;
     }
 

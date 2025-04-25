@@ -21,9 +21,9 @@ public class WeatherController {
 
     private final WeatherService weatherService;
     @Value("${weather.api.default-aqi}")
-    private final String aqi;
+    private String aqi;
     @Value("${weather.api.default-alerts}")
-    private final String alerts;
+    private String alerts;
 
     @GetMapping("/city")
     public ResponseEntity<WeatherApiResponse> getForecastCity(@RequestParam @Valid String city,

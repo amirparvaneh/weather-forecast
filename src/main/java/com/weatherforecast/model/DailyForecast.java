@@ -20,10 +20,6 @@ public class DailyForecast {
     private double maxTempC;
     private double minTempC;
     private double avgTempC;
-    private String condition;
-    private double maxWindKph;
-    private double totalPrecipMm;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_weather_id")
     private CityWeather city;
