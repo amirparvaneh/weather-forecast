@@ -12,3 +12,20 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+
+weather:
+  api:
+    base-url: http://api.weatherapi.com/v1
+    forecast-endpoint: /forecast.json
+    key: e3c0bb97a3ea4126b1791534252404
+    default-day: 2
+    default-aqi: no
+    default-alerts: no
