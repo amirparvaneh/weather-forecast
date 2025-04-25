@@ -44,3 +44,9 @@ weather:
     default-day: 2
     default-aqi: no
     default-alerts: no
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
