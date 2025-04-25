@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: weatherforecast
+  datasource:
+    url: jdbc:mysql://localhost:3306/weather_db
+    username: weather
+    password: weatherpass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
