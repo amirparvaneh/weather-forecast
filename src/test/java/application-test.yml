@@ -1,0 +1,5 @@
+weather:
+  api:
+    key: test-key
+    default-aqi: "no"
+    default-alerts: "no"
