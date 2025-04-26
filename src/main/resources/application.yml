@@ -47,6 +47,9 @@ weather:
 
 springdoc:
   api-docs:
-    enabled: true
+    path: /v3/api-docs
+    enabled: 'true'
+  version: 3.1.0
   swagger-ui:
+    enabled: 'true'
     path: /swagger-ui.html
