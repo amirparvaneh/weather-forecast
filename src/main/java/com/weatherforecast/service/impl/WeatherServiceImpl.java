@@ -60,10 +60,10 @@ public class WeatherServiceImpl implements WeatherService {
         apiResponse.getForecast().getForecastday().forEach(forecastDay -> {
             DailyForecast dailyForecast = new DailyForecast();
             dailyForecast.setForecastDate(LocalDate.parse(forecastDay.getDate()));
-            dailyForecast.setMaxTempC(forecastDay.getDay().getMaxTemp_c());
-            dailyForecast.setMinTempC(forecastDay.getDay().getMinTemp_c());
-            dailyForecast.setAvgTempC(forecastDay.getDay().getAvgTemp_c());
-            dailyForecast.setCity(city);
+            dailyForecast.setMaxtempC(forecastDay.getDay().getMaxtemp_c());
+            dailyForecast.setMintempC(forecastDay.getDay().getMintemp_c());
+            dailyForecast.setAvgtempC(forecastDay.getDay().getAvgtemp_c());
+            dailyForecast.setCityWeather(city);
             city.getForecasts().add(dailyForecast);
         });
     }

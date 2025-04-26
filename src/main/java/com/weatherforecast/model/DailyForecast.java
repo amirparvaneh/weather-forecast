@@ -17,10 +17,10 @@ public class DailyForecast {
     private Long id;
 
     private LocalDate forecastDate;
-    private double maxTempC;
-    private double minTempC;
-    private double avgTempC;
+    private double maxtempC;
+    private double mintempC;
+    private double avgtempC;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_weather_id")
-    private CityWeather city;
+    private CityWeather cityWeather;
 }

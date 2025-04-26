@@ -26,7 +26,7 @@ public class CityWeather {
     private String country;
     private double latitude;
     private double longitude;
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "cityWeather", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DailyForecast> forecasts = new ArrayList<>();
     @CreationTimestamp
     private LocalDateTime createdAt;
