@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/cities")
 @RequiredArgsConstructor
@@ -23,4 +25,8 @@ public class CityWeatherController {
         return ResponseEntity.ok(cityWeatherByName);
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<CityWeatherResponse>> getAllCities(){
+        return ResponseEntity.ok(cityWeatherService.getAll());
+    }
 }

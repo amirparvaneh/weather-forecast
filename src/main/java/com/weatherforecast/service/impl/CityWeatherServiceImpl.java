@@ -8,6 +8,8 @@ import com.weatherforecast.service.CityWeatherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -20,5 +22,10 @@ public class CityWeatherServiceImpl implements CityWeatherService {
     public CityWeatherResponse getCityWeatherByName(String cityName) {
         return cityWeatherMapper.cityWeatherToDto(cityWeatherRepo.findByName(cityName).orElseThrow(() ->
                 new NotFoundException("this city not found with this name" + cityName)));
+    }
+
+    @Override
+    public List<CityWeatherResponse> getAll() {
+       return cityWeatherMapper.allCityToDto(cityWeatherRepo.findAll());
     }
 }
